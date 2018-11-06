@@ -81,10 +81,10 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Replace `Type meaningfulName = <computation>; return meaningfulName;` by `return computation();` + method
 21. Document Implementation Decisions
     * Comment Template
-        > In the context of [USE CASE],<br>
-        > facing [CONCERN]<br>
-        > we decided for [OPTION]<br>
-        > to achieve [QUALITY],<br>
+        > In the context of [USE CASE],<br/>
+        > facing [CONCERN]<br/>
+        > we decided for [OPTION]<br/>
+        > to achieve [QUALITY],<br/>
         > accepting [DOWNSIDE].
 22. Document Using Examples
     * Provide the general format/template + valid examples + invalid examples
@@ -113,7 +113,7 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Use HTML formatting + JavaDocs (`@param`, `@return`, `@throws`, `@see`)
     * Escape "<", ">" and "&"
 26. Structure JavaDoc of Constructors
-    * AS you can't select the constructor's name, comment is even more important!
+    * Since you can't select the constructor's name, comment is even more important!
     * Explain the state of the object when the constructor finishes
     * Explain the links between the various constructors (e.g. through `@See`)
 
@@ -128,7 +128,7 @@ _"Any fool can write code that machines understand, only good programmers write 
         * a constructor without any parameters
         * correctly named *public* getter and setter for *every* *private* field
     * For boolean fields, the getter becomes `isXXX()`
-    * As many frameworks (Hibernate, Spring, Play!, Jackson...) expect Beans, not respecting the conventions will result in compile or (very difficult to detect) runtime errors
+    * As many frameworks (Hibernate, Spring, Play!, Jackson...) expect Beans, not respecting the conventions will result in compile or (even more difficult to detect) runtime errors
 29. Avoid Single-Letter Names
     * Single letters convey little meaning, imply multiple reuse
     * Programming != Maths
@@ -156,11 +156,11 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Separate parameter validations (placed first) from the normal path (placed after)
 34. Always Catch Most Specific Exception
     * You should always catch the most specific exception type
-    * If you catch a more general type, you risk swallowing errors that you shouldn’t (e.g. NullPointerException that MUST have been fixed - thus should have crashed the programm)
-    * NEVER catch Throwable, or you'll break the JVM!!!
+    * If you catch a more general type, you risk swallowing errors that you shouldn’t (e.g. `NullPointerException` that MUST have been fixed - thus should have crashed the programm)
+    * NEVER catch `Throwable`, or you'll break the JVM!!!
     * **TIP** to reduce code size, Java7 introduced multiple catch blocks: `catch(NumberFormatException | IOException e)`
 35. Explain Cause in Message
-    * The Type of the Exception only give "what" is wrong, to solve the problem the dev needs more context/details> put that info in the message
+    * The Type of the Exception only give "what" is wrong, to solve the problem the dev needs more context/details => put that info in the message
     * Give enough info so that the bug can be reproduced (thus, fixed): what was expected, what we got, context
     * BEWARE that in Web Applications leaking too much information to the user is a security breach => write detailed error messages in logs, but not in GUI
     * **TIP** reuse such error cases in JUnit tests => ensures non-regression in future code
@@ -168,7 +168,7 @@ _"Any fool can write code that machines understand, only good programmers write 
 36. Avoid Breaking the Cause Chain
     * You will get only the highest level error, loosing all the detailed message and exact error line
     * When you rethrow an exception, always use the constructor: `Exception(String message, Throwable cause)`
-    * Never skip an Exception level by forwarding the lower level cause to the higher level: +throw new XXXException(e.getCause());+
+    * Never skip an Exception level by forwarding the lower level cause to the higher level: ~~throw new XXXException(e.getCause());~~
 37. Expose Cause in Variable
     * Remember Exception are normal Classes, you can add Fields to them
     * Providing the new error message as an Field instead of embedding it in the new error message, allows to extract it easily
@@ -191,12 +191,12 @@ _"Any fool can write code that machines understand, only good programmers write 
 # Assert Things Going Right
 - TDD: write test cases BEFORE the actual code
 42. Structure Tests Into Given-When-Then
-    * "given" = sets the stage for the actual test & captures all prerequisites
-    * "when" = the operation that we actually want to test
-    * "then" = asserts the result(s) that we expect from the "when"
+    > [Given] <context of the current test> & <all prerequisites>
+    > [When] <operation to be tested>
+    > [Then] <result(s) that we expect>
     * Don't hesitate to explicit this structure with comments
 43. Use Meaningful Assertions
-    * To get more detailed error messages, use assertEquals(...), not assertTrue(...)
+    * To get more detailed error messages, use `assertEquals(...)`, not `assertTrue(...)`
 44. Expected Before Actual Value
     * BEWARE of the order of the arguments: `Assert(<expected>, <computed>)`
     * Remember to exploit the various asserts: `assertArrayEquals()`, `assertLinesMatch()`, `assertIterableEquals()`, `assertAll()`, `assertTimeout()`
@@ -205,7 +205,7 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Preferably use `assertEquals(double expected, double actual, double delta)` with delta=0.1*10^<expected precision>
     * **TIP** NEVER USE FLOATING-POINT ARITHMETIC FOR MONEY, EVER!
 46. Let JUnit Handle Exceptions
-    * Use =Assertions.assertThrows()= not `try {} catch() {}` in your tests
+    * Use `Assertions.assertThrows()` not `try {} catch() {}` in your tests
 47. Describe Your Tests
     * Name your test methods correctly as this name will be the 1rst info to appear in case of failure
     * Use `@DisplayName("what it checks")` and `@Disabled("[why it’s disabled] TODO: [what’s the plan to enable again]")`
@@ -217,7 +217,7 @@ _"Any fool can write code that machines understand, only good programmers write 
 49. Parametrize Your Tests
     * Do not repeat asserts/write multiple tests in the same test method
         * Makes actual error more difficult to spot
-        *  Forces solving of errors sequentially
+        * Forces solving of errors sequentially
     * Create a test method with arguments together with `@ParameterizedTest()` and `@ValueSource()`
 50. Cover the Edge Cases
     * Edge cases are very application-dependant, but at least check type boundary values:
@@ -245,15 +245,15 @@ _"Any fool can write code that machines understand, only good programmers write 
     * This will ease refactoring when switching to another concrete type
 54. Favor Immutable Over Mutable State
     * Misuse of objects is detected at compilation time
-    * Use final when Object are not supposed to change
-    * Since everything is a reference in Java, using XXX x = y creates 2 references to the same object. Modifying one will impact the other. If this was not the intent (forgot the create a copy of the instance) this will be detected at Runtime only
+    * Use `final` when Object are not supposed to change
+    * Since everything is a reference in Java, using `XXX x = y` creates 2 references to the same object. Modifying one will impact the other. If this was not the intent (forgot to create a copy of the instance) this will be detected at Runtime only
     * This is particularly true for "value objects" (indistinguishable if their values are equal): percentages, money, currency, times, dates, coordinates, distances...
     * **TIP** also set the Class as final, otherwise sub-classes might re-introduce mutability
 55. Combine State and Behavior
     * Classes containing only behavior (=Methods) but lacking state (=Fields) indicate OO-design problems (encapsulation is lost)
     * Watch out for methods that only work with their input parameters, but NOT with the Fields of their class
 56. Avoid Leaking References
-        * BEWARE in your setters, if you simply copy the reference passed as argument, an external modification of the Object thazt waht passed as argumetn will also change the content of your own Object!
+    * BEWARE in your setters, if you simply copy the reference passed as argument, an external modification of the Object thazt waht passed as argument will also change the content of your own Object!
     * **TIP** In your setters, copy the content of the Objects/Collections passed as argument: `this.xxx = new ArrayList<>(xxxArg);`
         * Also protects against null by raising Exception if one is passed as argument!
     * BEWARE in your getters, when you return an Object/Collection, even it is final (reference is not modifiable), the content can still be modified!
@@ -314,10 +314,10 @@ _"Any fool can write code that machines understand, only good programmers write 
 68. Agree On the Java Format in Your Team
     * Work along agile principles (XP/SCRUM)
     * Whatever it is, define a policy (braces positions, spaces vs. tab, max line length...)
-    * If you do not want to waste time creating one, use an industry standard, like
- https://google.github.io/styleguide/javaguide.html
-    * Configure your tools to use it (IDE, Versioning tool...)
- https://github.com/google/google-java-format
+    * If you do not want to waste time creating one, use an industry standard, like<br/>
+      https://google.github.io/styleguide/javaguide.html
+    * Configure your tools to use it (IDE, Versioning tool...)<br/>
+      https://github.com/google/google-java-format
 69. Automate Your Build
     * First *learn* coding Java in Text Editor + compile&run *manually*
     * Then *in production* use an IDE + manage deps&compile&test&document&deploy&run *with tools*
@@ -328,10 +328,10 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Example tools: Jenkins, Travis CI (cloud), Codacity (cloud)
 71. Prepare for and Deliver Into Production:
     * You MUST be able to respond to the question:
- /How long does it take you to put a change of a single line of code into production?/
+      _How long does it take you to put a change of a single line of code into production?_
     * Most CI tools will also provide means to automatically deploy
     * Prepare by collecting&monitoring debugging information: logs, metrics, dashboards, and alerts
-    * Example tools: ELk-Stack, Graylog
+    * Example tools: ELK-Stack, Graylog
     * Monitor Exceptions
     * Example tools: Airbrake (back end), Sentry (front end)
 72. Favor Logging Over Console Output
@@ -357,8 +357,8 @@ _"Any fool can write code that machines understand, only good programmers write 
         * AtomicInteger, LongAdder, ConcurrentHashMap, CopyOnWriteArrayList, BlockingQueue
     * Try to avoid primitive tools
         * `volatile` and `synchronized`
-        * Thread#start() and the Thread#join()
-        * Object#wait() and Object#notify()
+        * `Thread#start()` and `Thread#join()`
+        * `Object#wait()` and `Object#notify()`
 75. Speed Up Your Program
     * Be sure to write Streams/Lambdas without side effects and where single processing steps are independent
     * Then you can simply transform
