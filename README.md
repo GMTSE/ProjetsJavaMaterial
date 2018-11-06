@@ -1,8 +1,12 @@
 # Material for Java Projects
 
-You'll be asked to respect as much as possible the *Good Coding Practices* from Java by Comparison.
+When you will be professionnals, you will be working in teams, sharing your code with others. As a consequence, you **cannot** write code as if you were alone. You **have to** take into consideration that others will have to read/understand/modify your code. Even when coding alone, you will frequently have to modify your own code some time after writing it (to correct bugs, adapt to new library version, etc.).
 
-At least, you MUST respect the following rules: 
+That's why **Good Coding Practices** have been developped along the years be professional programmers. To help you directly write code that is easier to understand and modify. And facilitate your colleagues (or future-self)'s job.
+
+That's also why we will ask you to respect as much as possible such Good Coding Practices during your projects (here we will use rules defined in the very pratical and easy to read book "Java by Comparison").
+
+At least, during your projects, you **MUST** respect the following rules: 
 
 * General
     * Rule#5 (always check for null - args...)
