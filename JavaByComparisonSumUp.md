@@ -17,8 +17,8 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Group into simple `isXXX()` methods
     * Use brackets to avoid having to remember boolean operators' precedence
     * Remember:
-        * !A && !B == !(A || B) // true
-        * !A || !B == !(A && B) // true
+        * `!A && !B == !(A || B) // true`
+        * `!A || !B == !(A && B) // true`
 5. Avoid NullPointerException in Conditionals
     * `if (m == null || m.isEmpty() || m.xxx) { ... }`
     * Always check !=null first
@@ -191,9 +191,9 @@ _"Any fool can write code that machines understand, only good programmers write 
 # Assert Things Going Right
 - TDD: write test cases BEFORE the actual code
 42. Structure Tests Into Given-When-Then
-    > [Given] <context of the current test> & <all prerequisites>
-    > [When] <operation to be tested>
-    > [Then] <result(s) that we expect>
+    > [Given] < context of the current test > & < all prerequisites ><br/>
+    > [When] < operation to be tested ><br/>
+    > [Then] < result(s) that we expect ><br/>
     * Don't hesitate to explicit this structure with comments
 43. Use Meaningful Assertions
     * To get more detailed error messages, use `assertEquals(...)`, not `assertTrue(...)`
