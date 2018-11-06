@@ -81,11 +81,11 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Replace "Type meaningfulName = <computation>; return meaningfulName;" by "return computation();" + method
 21. Document Implementation Decisions
     * Comment Template
-    In the context of [USE CASE],
-    facing [CONCERN]
-    we decided for [OPTION]
-    to achieve [QUALITY],
-    accepting [DOWNSIDE].
+        > In the context of [USE CASE],<br>
+        > facing [CONCERN]<br>
+        > we decided for [OPTION]<br>
+        > to achieve [QUALITY],<br>
+        > accepting [DOWNSIDE].
 22. Document Using Examples
     * Provide the general format/template + valid examples + invalid examples
     * **TIP** remember to add those examples as JUnit tests so that there's more chances the comments correspond to the code!
