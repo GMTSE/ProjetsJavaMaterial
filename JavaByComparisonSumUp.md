@@ -76,7 +76,7 @@ _"Any fool can write code that machines understand, only good programmers write 
     * Deleted comments will not get lost if you use a proper "version control system"
 19. Replace Comments with Constants
     * Comments are there to explain the code. But it’s even better if the code speaks for itself!
-    * Replace Magic Value~Comment by Consts or Enums with meaningful names!
+    * Replace Magic Value+Comment by Consts or Enums with meaningful names!
 20. Replace Comments with Utility Methods
     * Replace "Type meaningfulName = <computation>; return meaningfulName;" by "return computation();" + method
 21. Document Implementation Decisions
