@@ -4,7 +4,7 @@ When you will be professionnals, you will be working in teams, sharing your code
 
 That's why **Good Coding Practices** have been developped along the years by professional programmers: To help you directly write code that is easier to understand and modify. And facilitate your colleagues (or future-self)'s job.
 
-That's also why we will ask you to respect as much as possible such Good Coding Practices *during your projects* (here, we will use rules defined in the - very pratical and easy to read - book "Java by Comparison").
+That's also why, *during your projects*, we will ask you to respect as much as possible the Good Coding Practices listed in [this file](JavaByComparisonSumUp.md) (here, we will use rules defined in the - very pratical and easy to read - book "Java by Comparison").
 
 At least, during your projects, you **MUST** respect the following rules (your evaluation will take them into account):
 
